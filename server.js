@@ -3,6 +3,8 @@ import cors from 'cors'
 import dotenv from "dotenv";
 import connectDB from './config/db.js'
 import connectCloudinary from './config/cloudinary.js';
+import userRouter from './routes/userRoute.js';
+import { errorMiddleware } from './middleware/error.js';
 
 
 // App Config
@@ -17,8 +19,10 @@ app.use(express.json())
 app.use(cors())
 connectDB()
 connectCloudinary()
+app.use(errorMiddleware)
 
 // api endpoints
+app.use('/api/user',userRouter)
 
 app.get('/',(req,res)=>{
     res.send("API WORKING")
