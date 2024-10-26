@@ -89,6 +89,24 @@ const registerUser = async (req, res, next) => {
 
 // Route for Admin Login
 
-const adminLogin = async (req, res) => {};
+const adminLogin = async (req, res) => {
+  try {
+    
+    const {email,password} = req.body
+    if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+      const token = jwt.sign(email+password,process.env.JWT_SECRET_KEY)
+
+      res.json({success:true,token})
+    }else{
+      res.json({success:false,message:"invalid Email or password"})
+    }
+
+  } catch (error) {
+    console.error("Error during registration: ", error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
+  }
+};
 
 export { loginUser, registerUser, adminLogin };
