@@ -1,0 +1,29 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+logs
+*.log
+
+# Dependency directories
+jspm_packages/
+
+# Environment variables
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Other files to ignore
+*.bak
+*.tmp

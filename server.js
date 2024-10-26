@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from "dotenv";
-import connectDB from './config/db.js'
+import connectDB from './database/db.js'
 import connectCloudinary from './config/cloudinary.js';
 import userRouter from './routes/userRoute.js';
 import { errorMiddleware } from './middleware/error.js';
