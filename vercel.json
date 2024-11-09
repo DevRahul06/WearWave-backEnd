@@ -1,0 +1,28 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/user/(.*)",
+        "dest": "/routes/userRoute.js"
+      },
+      {
+        "src": "/api/product/(.*)",
+        "dest": "/routes/productRoute.js"
+      },
+      {
+        "src": "/api/cart/(.*)",
+        "dest": "/routes/cartRoute.js"
+      },
+      {
+        "src": "/api/order/(.*)",
+        "dest": "/routes/orderRoute.js"
+      }
+    ]
+  }
+  
