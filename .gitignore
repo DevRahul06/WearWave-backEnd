@@ -15,6 +15,9 @@ jspm_packages/
 # Environment variables
 .env
 
+# .gitignore
+config/.env
+
 # IDE and editor files
 .vscode/
 .idea/
