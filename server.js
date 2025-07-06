@@ -1,35 +1,12 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import connectDB from "./database/db.js";
-import connectCloudinary from "./config/cloudinary.js";
-import userRouter from "./routes/userRoute.js";
-import productRouter from "./routes/productRoute.js";
-import cartRouter from "./routes/cartRoute.js";
-import orderRouter from "./routes/orderRoute.js";
+import app from "./app.js";
+import cloudinary from "cloudinary";
 
-// App Config
-dotenv.config({ path: "./config/.env" });
-
-const app = express();
-const port = process.env.PORT || 5000;
-
-// middlewares
-app.use(express.json());
-app.use(cors());
-connectDB();
-connectCloudinary();
-
-// api endpoints
-app.use("/api/user", userRouter);
-app.use("/api/product", productRouter);
-app.use("/api/cart", cartRouter);
-app.use("/api/order", orderRouter);
-
-app.get("/", (req, res) => {
-  res.send("API WORKING");
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_API_NAME,
+  api_key: process.env.CLOUDINARY_API_URL,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.listen(port, () => {
-  console.log("Server run at Port :" + port);
+app.listen(process.env.PORT, () => {
+  console.log(`server listening at port ${process.env.PORT}`);
 });
